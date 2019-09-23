@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>原生JS + AJAX + PHP 异步上传图片(可上传多张)</title>
+<link rel="stylesheet" type="text/css" href="./static/css/css.css">
+</head>
+<body>
+
+<!-- 按钮容器 -->
+<div class="box">
+  <label class="chooseImage" for="inputfile">
+    <input type="file" multiple="multiple" id="inputfile">
+    <span>选择图片</span>
+  </label>
+  <a class="reChooseImage" href="javascript:;">
+    <span>重新选择</span>
+  </a>
+</div>
+<!-- 图片显示区域 -->
+<div class="images" id="feedback"></div>
+
+
+
+
+<script src="./static/js/UPLOADIMAGE.js"></script>
+
+<script type="text/javascript">
+(function(){
+  const inputfile = document.querySelector('#inputfile')
+  const feedback = document.querySelector('#feedback')
+
+  inputfile.onchange = function(e) {
+    UPLOADIMAGE.init({
+      // 请求的后台接口 (必传)
+      apiUrl : './api/upload/image.php',
+      // 上传的图片文件 (必传)
+      files: e.target.files,
+      // 需要插入图片的区域 (可选，默认不展示图片)
+      // 先显示base64缩略图，最后显示上传后的图片
+      showBox: feedback,
+      // 上传文件的配置
+      config: {
+        // 文件路径 (可选，默认: temp)
+        path : 'article',
+        // 图片文件的大小 (可选，默认: 5M)
+        size : 5 * 1024 * 1024
+      }
+    }, function(data){
+      console.log(data)
+    })
+  }
+
+}())
+</script>
+</body>
+</html>

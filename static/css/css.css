@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.box {display: -webkit-flex; display: flex; flex-flow: row nowrap;}
+.box > * {margin-right: 20px;}
+.box > * {position: relative; height: 40px; line-height: 40px; padding: 0 20px; background: green; color: #fff; cursor: pointer;}
+.box > * > input[type="file"] {position: absolute; left: -9999px;}
+
+
+.images {margin-top: 20px;}
+.images {display: -webkit-flex; display: flex; flex-flow: row nowrap; align-items: center;}
+.images > img {height: 200px; margin-right: 20px;}
+
+
