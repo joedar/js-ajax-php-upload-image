@@ -11,7 +11,7 @@ const JOEDAR = (function(){
           if (xhr.status === 200) {
             callback(JSON.parse(xhr.response))
           } else {
-            callback('请求失败',vars)
+            callback('请求失败')
           }
         }
       }
